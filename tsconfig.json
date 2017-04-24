@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "outDir": "./build",
+        "allowJs": false,
+        "target": "es5",
+        "jsx": "react",
+        "declaration": true
+    },
+    "include": [
+        "./src/**/*"
+    ],
+    "files": [
+        "node_modules/rx/ts/rx.all.d.ts"
+    ]
+}

@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "typescript": "^2.2.2"
+  },
+  "name": "hux",
+  "version": "0.0.1",
+  "description": "A simpler way to write JavaScript",
+  "main": "index.js",
+  "author": "Will <will@willacton.com>",
+  "license": "MIT"
+}

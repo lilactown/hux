@@ -3,12 +3,17 @@ export interface HuxPlugin {
     executor: (exec: Function, f: any, ...args: any[]) => any,
 }
 
-export interface HuxFn {
+interface HuxFn {
     (...args: any[]): any;
 }
 
+function isHuxFn(f): f is HuxFn {
+    return typeof f === 'function';
+}
+
 // export interface HExpression {
-//     [f, ...args]: [HuxFn, any[]];
+//     0: HuxFn,
+//     [index: number]: any,
 // }
 
 interface SimpleExecutor {
@@ -24,7 +29,6 @@ const _when =
     (executor: SimpleExecutor, predicate: any, ...exprs: any[]) =>
         executor(predicate) ? exprs.map(executor)[exprs.length-1] : null;
 
-// export function executor(expr: HExpression, plugins?: HuxPlugin[]);
 export function executor(expr: any, plugins?: HuxPlugin[]) {
     if (Array.isArray(expr)) {
         const _exec: SimpleExecutor = (x) => executor(x, plugins);
@@ -39,7 +43,7 @@ export function executor(expr: any, plugins?: HuxPlugin[]) {
             }
         }
 
-        if (typeof f === 'function') {
+        if (isHuxFn(f)) {
             return f(...args.map(_exec));
         }
         if (Array.isArray(f)) {

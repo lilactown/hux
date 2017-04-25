@@ -1,22 +1,25 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+function isHuxFn(f) {
+    return typeof f === 'function';
+}
 exports.ifelse = Symbol('ifelse');
 exports.when = Symbol('when');
 const _ifelse = (executor, predicate, left, right) => executor(predicate) ? executor(left) : executor(right);
 const _when = (executor, predicate, ...exprs) => executor(predicate) ? exprs.map(executor)[exprs.length - 1] : null;
-// export function executor(expr: HExpression, plugins?: HuxPlugin[]);
 function executor(expr, plugins) {
     if (Array.isArray(expr)) {
         const _exec = (x) => executor(x, plugins);
         const [f, ...args] = expr;
         // Check plugins
         if (plugins) {
+            // find the first matching plugin
             const matchedPlugin = plugins.find(plugin => plugin.predicate(f));
             if (matchedPlugin) {
                 return matchedPlugin.executor(_exec, f, ...args);
             }
         }
-        if (typeof f === 'function') {
+        if (isHuxFn(f)) {
             return f(...args.map(_exec));
         }
         if (Array.isArray(f)) {

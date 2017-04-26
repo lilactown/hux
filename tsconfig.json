@@ -4,6 +4,16 @@
         "target": "es6",
         "jsx": "react",
         "declaration": true,
-        "module": "commonjs"
-    }
+        "module": "commonjs",
+        "noImplicitAny": false,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "strictNullChecks": true
+    },
+    "exclude": [
+        "node_modules",
+        "examples"
+    ]
 }

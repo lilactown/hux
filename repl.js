@@ -1,5 +1,5 @@
 const repl = require('repl');
-const e = require('./').executor;
+const hx = require('./').hx;
 const {
     id,
     list, map, reduce, filter, join,
@@ -10,7 +10,7 @@ const {
 } = require('./lib');
 
 function listEval(cmd, context, filename, cb) {
-    cb(null, eval(`e(${cmd})`));
+    cb(null, eval(`hx(${cmd})`));
 }
 
 const server = repl.start({ prompt: ':: ', eval: listEval });

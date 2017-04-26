@@ -1,22 +1,15 @@
 import { Component } from 'react';
 import h from 'react-hyperscript';
-import hh from 'hyperscript-helpers';
+import helpers from 'hyperscript-helpers';
 import { list, str, ifelse, when, map } from '../../../lib.js';
-import { executor as e } from '../../../';
+import { hx } from '../../../';
 import logo from './logo.svg';
 import './App.css';
 
-const { div, p, span, ul, li, img, h2, input, strike } = hh(h);
-
-// const ReactHyperPlugin = {
-//   predicate: (f) => typeof f === 'string',
-//   executor: (_exec, f, ...args) => (h(f, ...args)),
-// };
-
-// const e = (expr) => executor(expr);
+const { div, p, span, ul, li, img, h2, input, strike } = helpers(h);
 
 function Greet({ name }) {
-  return e(
+  return hx(
     [p, '.App-intro', [
       [span, [str, 'Hello, ', [ifelse, name, name, 'world'], '!']]]]);
 }
@@ -28,7 +21,7 @@ const itemStyle = {
   cursor: 'pointer',
 };
 function Item({ text, onClick }) {
-  return e(
+  return hx(
     [li,
       { onClick: () => onClick(text), style: itemStyle },
       text]);
@@ -52,7 +45,7 @@ class App extends Component {
     this.setState(({ toggle }) => ({ toggle: !toggle }));
   }
   render() {
-    return e(
+    return hx(
       [div, '.App', [
         [div, '.App-header', [
           [img, '.App-logo', { src: logo }],

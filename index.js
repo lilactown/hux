@@ -7,9 +7,9 @@ exports.ifelse = Symbol('ifelse');
 exports.when = Symbol('when');
 const _ifelse = (executor, predicate, left, right) => executor(predicate) ? executor(left) : executor(right);
 const _when = (executor, predicate, ...exprs) => executor(predicate) ? exprs.map(executor)[exprs.length - 1] : null;
-function executor(expr, plugins) {
+function hx(expr, plugins) {
     if (Array.isArray(expr)) {
-        const _exec = (x) => executor(x, plugins);
+        const _exec = (x) => hx(x, plugins);
         const [f, ...args] = expr;
         // Check plugins
         if (plugins) {
@@ -37,4 +37,4 @@ function executor(expr, plugins) {
     }
     return expr;
 }
-exports.executor = executor;
+exports.hx = hx;

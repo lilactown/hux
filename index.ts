@@ -3,11 +3,11 @@ export interface HuxPlugin {
     executor: (exec: Function, f: any, ...args: any[]) => any,
 }
 
-interface HuxFn {
+export interface HuxFn {
     (...args: any[]): any;
 }
 
-function isHuxFn(f): f is HuxFn {
+function isHuxFn(f: any): f is HuxFn {
     return typeof f === 'function';
 }
 
@@ -29,9 +29,9 @@ const _when =
     (executor: SimpleExecutor, predicate: any, ...exprs: any[]) =>
         executor(predicate) ? exprs.map(executor)[exprs.length-1] : null;
 
-export function executor(expr: any, plugins?: HuxPlugin[]) {
+export function hx(expr: any, plugins?: HuxPlugin[]) {
     if (Array.isArray(expr)) {
-        const _exec: SimpleExecutor = (x) => executor(x, plugins);
+        const _exec: SimpleExecutor = (x) => hx(x, plugins);
         const [f, ...args] = expr;
 
         // Check plugins

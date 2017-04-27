@@ -49,7 +49,7 @@ class App extends Component {
       [div, '.App', [
         [div, '.App-header', [
           [img, '.App-logo', { src: logo }],
-          [h2, [list, 'Welcome to ', [strike, 'React'], ' Lilac']]]],
+          [h2, [list, 'Welcome to ', [strike, 'React'], ' Hux']]]],
         [Greet, { name: this.state.name }],
         [p, [
           [input,

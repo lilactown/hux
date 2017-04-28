@@ -1,5 +1,5 @@
 export interface HuxPlugin {
-    predicate: (f: any) => boolean,
+    predicate: (f: any, ...args: any[]) => boolean,
     executor: (exec: Function, f: any, ...args: any[]) => any,
 }
 
@@ -37,7 +37,7 @@ export function hx(expr: any, plugins?: HuxPlugin[]) {
         // Check plugins
         if (plugins) {
             // find the first matching plugin
-            const matchedPlugin = plugins.find(plugin => plugin.predicate(f))
+            const matchedPlugin = plugins.find(plugin => plugin.predicate(f, ...args))
             if (matchedPlugin) {
                 return matchedPlugin.executor(_exec, f, ...args);
             }

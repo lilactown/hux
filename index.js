@@ -14,7 +14,7 @@ function hx(expr, plugins) {
         // Check plugins
         if (plugins) {
             // find the first matching plugin
-            const matchedPlugin = plugins.find(plugin => plugin.predicate(f));
+            const matchedPlugin = plugins.find(plugin => plugin.predicate(f, ...args));
             if (matchedPlugin) {
                 return matchedPlugin.executor(_exec, f, ...args);
             }

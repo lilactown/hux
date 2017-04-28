@@ -2,7 +2,6 @@
     "compilerOptions": {
         "allowJs": false,
         "target": "es6",
-        "jsx": "react",
         "declaration": true,
         "module": "commonjs",
         "noImplicitAny": false,

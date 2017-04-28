@@ -9,6 +9,10 @@
   "author": "Will <will@willacton.com>",
   "license": "MIT",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "test": "yarn build && node tests.js"
+  },
+  "devDependencies": {
+    "@types/node": "^7.0.14"
   }
 }

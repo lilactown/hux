@@ -1,5 +1,5 @@
 export interface HuxPlugin {
-    predicate: (f: any) => boolean;
+    predicate: (f: any, ...args: any[]) => boolean;
     executor: (exec: Function, f: any, ...args: any[]) => any;
 }
 export interface HuxFn {

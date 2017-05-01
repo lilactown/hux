@@ -4,13 +4,15 @@
   },
   "name": "hux",
   "version": "0.0.1",
+  "bin": "node repl.js",
   "description": "A simpler way to write JavaScript",
   "main": "index.js",
   "author": "Will <will@willacton.com>",
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "test": "yarn build && node tests.js"
+    "test": "yarn build && node tests.js",
+    "repl": "node repl.js"
   },
   "devDependencies": {
     "@types/node": "^7.0.14"
